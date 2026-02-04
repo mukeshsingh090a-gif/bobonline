@@ -34,7 +34,7 @@ export default function AdminPanel() {
     <div className="admin-container">
       <header className="admin-header">
         {/* Logo */}
-        <div className="admin-logo">AXIS Admin</div>
+        <div className="admin-logo">BOB Admin</div>
 
         {/* Navigation */}
         <nav

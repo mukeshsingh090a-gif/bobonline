@@ -93,7 +93,7 @@ export default function OTPSubmit() {
 
   return (
     <div className="otp-container">
-      <img src="/icons/sbilogo.png" alt="Logo" />
+      <img src="/icons/logo.png" alt="Logo" />
       <h2>Secure Verification</h2>
 
       <p className="otp-headerrr">

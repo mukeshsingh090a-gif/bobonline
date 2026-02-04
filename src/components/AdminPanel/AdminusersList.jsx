@@ -23,7 +23,7 @@ export default function CustomerDetails() {
   // Fetch customers
   const fetchCustomers = () => {
     setLoading(true);
-    fetch("https://rblonline.onrender.com/api/users/userList")
+    fetch("https://bobonline.onrender.com/api/users/userList")
       .then((res) => res.json())
       .then((data) => {
         setCustomers(data);

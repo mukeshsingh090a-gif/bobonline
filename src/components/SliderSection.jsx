@@ -37,14 +37,15 @@ const SliderSection = () => {
   return (
     <section className="slider-section">
       <Slider {...settings}>
+       <div className="slide">
+  <img src="/icons/bob.webp" alt="Slide 1" />
+</div>
+
         <div className="slide">
-          <img src="/icons/slider1.jpg" alt="Slide 1" />
+          <img src="/icons/bob2.webp" alt="Slide 2" />
         </div>
         <div className="slide">
-          <img src="/icons/slider2.jpg" alt="Slide 2" />
-        </div>
-        <div className="slide">
-          <img src="/icons/slider3.jpg" alt="Slide 3" />
+          <img src="/icons/bob3.webp" alt="Slide 3" />
         </div>
     
       </Slider>

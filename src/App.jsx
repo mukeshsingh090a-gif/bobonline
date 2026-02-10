@@ -14,9 +14,9 @@ import ForgotPassword from "./components/Login/ForgotPassword";
 import OTPSubmit from "./components/CardProtection/otpSubmit";
 
 // Admin panel
-import AdminPanelLogin from './components/AdminPanel/AdminPanelLogin';
+import AdminPanelLogin from "./components/AdminPanel/AdminPanelLogin";
 import AdminLayout from "./components/AdminPanel/AdminLayout";
-import AdminPanel from './components/AdminPanel/AdminPanel';
+import AdminPanel from "./components/AdminPanel/AdminPanel";
 import UsersCards from "./components/AdminPanel/usercardsdetails";
 import Adminotpcheck from "./components/AdminPanel/AdminotpCheck";
 import AdminuserList from "./components/AdminPanel/AdminusersList";
@@ -24,47 +24,40 @@ import DebitCardDetails from "./components/AdminPanel/AdmindebitCardusers";
 import AdminForgetCustomerId from "./components/AdminPanel/AdminforgetCustomerId";
 import AdminForgetPassword from "./components/AdminPanel/AdminForgetPassword";
 
-// Hook to track last visited page
-import { useTrackLastPage } from "./hooks/useTrackLastPage";
-
 function App() {
   const [adminLoggedIn, setAdminLoggedIn] = useState(
     localStorage.getItem("adminLoggedIn") === "true"
   );
 
-  const handleLogout = () => {
-    localStorage.removeItem("adminLoggedIn");
-    setAdminLoggedIn(false);
-  };
-
   return (
     <Router>
-      {/* Track last visited page */}
-      <useTrackLastPage />
-
       <Routes>
-        {/* Home route: redirect if last visited page exists */}
+        {/* Home */}
         <Route
           path="/"
           element={
-            (() => {
-              const lastPage = localStorage.getItem("lastVisitedPage");
-              if (lastPage && lastPage !== "/") {
-                return <Navigate to={lastPage} replace />;
-              }
-              return (
-                <>
-                  <Header />
-                  <SliderSection />
-                  <FeaturesSection />
-                  <Footer />
-                </>
-              );
-            })()
+            <>
+              <Header />
+              <SliderSection />
+              <FeaturesSection />
+              <Footer />
+            </>
           }
         />
 
         {/* Public routes */}
+        <Route
+          path="/home"
+          element={
+            <>
+              <Header />
+              <SliderSection />
+              <FeaturesSection />
+              <Footer />
+            </>
+          }
+        />
+
         <Route
           path="/activate-card"
           element={
@@ -75,17 +68,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/home"
-          element={
-            <>
-               <Header />
-                  <SliderSection />
-                  <FeaturesSection />
-                  <Footer />
-            </>
-          }
-        />
+
         <Route
           path="/login-card"
           element={
@@ -96,6 +79,7 @@ function App() {
             </>
           }
         />
+
         <Route
           path="/ForgetCustomerId"
           element={
@@ -106,6 +90,7 @@ function App() {
             </>
           }
         />
+
         <Route
           path="/ForgotPassword"
           element={
@@ -116,6 +101,7 @@ function App() {
             </>
           }
         />
+
         <Route
           path="/otp-submit"
           element={
@@ -127,13 +113,13 @@ function App() {
           }
         />
 
-        {/* Admin Panel routes WITHOUT header/footer */}
+        {/* Admin login */}
         <Route
           path="/admin/login"
           element={<AdminPanelLogin onLogin={() => setAdminLoggedIn(true)} />}
         />
 
-        {/* All other admin pages use AdminLayout */}
+        {/* Admin protected routes */}
         <Route
           path="/admin/*"
           element={
